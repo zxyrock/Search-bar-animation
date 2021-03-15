@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态搜索栏效果</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 搜索框最外边框，动画变化的边框，从圆形变长胶囊型 -->
+  <div class="search-box ">
+    <!-- 左侧搜索框 -->
+    <div class="key">
+      <input type="text" name="" id="search" placeholder="请输入搜索关键词..." value="">
+    </div>
+    <!-- 右侧搜索框 -->
+    <div class="bt">
+      <a href="" class="bt-a">
+        <i class="iconfont icon-sousuo"></i>
+      </a>
+    </div>
+    <script>
+      // 搜索框box元素
+      var box = document.querySelector('.search-box');
+      var input = document.querySelector('#search');
+      // 绑定mouseover监听事件
+      box.addEventListener('mouseover',()=>{
+        //增加 active样式
+        box.classList.add('active');
+      });
+      
+      // 解决点击搜索框会触发 body.click事件问题
+      box.addEventListener('click',(event)=>{
+        // 防止冒泡事件
+        event.stopPropagation();
+      });
+
+      document.body.addEventListener('click',()=>{
+        // 删除 active样式
+        box.classList.remove('active');
+        // 清除搜索框内容
+        input.value = "";
+      });
+    </script>
+  </div>
+</body>
+
+</html>
